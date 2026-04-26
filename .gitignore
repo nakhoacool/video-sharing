@@ -1,0 +1,50 @@
+# ──────────────────────────────────────────
+# Ruby on Rails (api/)
+# ──────────────────────────────────────────
+api/.bundle
+api/.env*
+api/log/*
+!api/log/.keep
+api/tmp/*
+!api/tmp/.keep
+api/tmp/pids/*
+!api/tmp/pids/
+!api/tmp/pids/.keep
+api/storage/*
+!api/storage/.keep
+api/tmp/storage/*
+!api/tmp/storage/
+!api/tmp/storage/.keep
+api/config/*.key
+api/*.sqlite3
+
+# ──────────────────────────────────────────
+# Node / Vite React (client/)
+# ──────────────────────────────────────────
+client/node_modules
+client/dist
+client/dist-ssr
+client/*.local
+
+# ──────────────────────────────────────────
+# Logs (shared)
+# ──────────────────────────────────────────
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ──────────────────────────────────────────
+# Editor / OS
+# ──────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
