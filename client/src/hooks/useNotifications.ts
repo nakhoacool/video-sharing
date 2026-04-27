@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { createConsumer, Consumer } from '@rails/actioncable';
 import { toast } from 'react-toastify';
 import type { User } from '../types';
+import { CABLE_URL } from '../lib/http';
 
 interface NewVideoPayload {
   type: 'new_video_shared';
@@ -23,7 +24,7 @@ export function useNotifications(
   useEffect(() => {
     if (!token) return;
 
-    const consumer: Consumer = createConsumer(`/cable?token=${token}`);
+    const consumer: Consumer = createConsumer(CABLE_URL(token));
 
     consumer.subscriptions.create('NotificationsChannel', {
       received(data: NewVideoPayload) {

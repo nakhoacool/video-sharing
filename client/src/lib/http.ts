@@ -1,4 +1,9 @@
-export const BASE_URL = '/api/v1';
+const API_ORIGIN = import.meta.env.VITE_API_BASE_URL ?? '';
+
+export const BASE_URL = `${API_ORIGIN}/api/v1`;
+
+export const CABLE_URL = (token: string) =>
+  `${API_ORIGIN.replace(/^https/, 'wss').replace(/^http/, 'ws')}/cable?token=${token}`;
 
 export function authHeaders(token?: string | null): HeadersInit {
   const headers: HeadersInit = { 'Content-Type': 'application/json' };
