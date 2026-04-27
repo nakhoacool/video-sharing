@@ -12,7 +12,7 @@ class VideoSerializer
       created_at: @video.created_at,
       shared_by: {
         id: @video.user.id,
-        name: @video.user.name
+        email: @video.user.email
       }
     }
   end

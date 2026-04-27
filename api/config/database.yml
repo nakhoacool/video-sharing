@@ -27,8 +27,9 @@ local: &local
 
 
 development:
-  <<: [*default, *local]
-  database: api_development
+  primary:
+    <<: [*default, *local]
+    database: api_development
   cable:
     <<: [*default, *local]
     database: api_development_cable

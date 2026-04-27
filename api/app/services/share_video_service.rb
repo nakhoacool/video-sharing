@@ -27,7 +27,7 @@ class ShareVideoService
       {
         type: "new_video_shared",
         video: { title: video.title, link: video.link },
-        shared_by: { name: video.user.name }
+        shared_by: { email: video.user.email }
       }
     )
   end
