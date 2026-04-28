@@ -30,5 +30,7 @@ class ShareVideoService
         shared_by: { email: video.user.email }
       }
     )
+  rescue => e
+    Rails.logger.error("ActionCable broadcast failed: #{e.message}")
   end
 end

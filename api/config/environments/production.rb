@@ -43,6 +43,11 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
+  # Allow WebSocket connections from the configured client origin.
+  config.action_cable.allowed_request_origins = [
+    ENV.fetch("ALLOWED_ORIGINS", "http://localhost:3000")
+  ]
+
   # Replace the default in-process memory cache store with a durable alternative.
   config.cache_store = :solid_cache_store
 

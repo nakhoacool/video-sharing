@@ -26,12 +26,6 @@ videos = [
     link:        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
   },
   {
-    user:        users[1],
-    title:       "Rails 8 in 100 Seconds",
-    description: "A quick overview of what's new in Ruby on Rails 8.",
-    link:        "https://www.youtube.com/watch?v=6jXNBTFBFwQ"
-  },
-  {
     user:        users[2],
     title:       "Clean Architecture - Uncle Bob",
     description: "Robert C. Martin explains clean architecture principles.",

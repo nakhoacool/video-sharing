@@ -30,10 +30,6 @@ development:
   primary:
     <<: [*default, *local]
     database: api_development
-  cable:
-    <<: [*default, *local]
-    database: api_development_cable
-    migrations_paths: db/cable_migrate
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -108,7 +104,4 @@ production:
     <<: *primary_production
     database: api_production_queue
     migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: api_production_cable
-    migrations_paths: db/cable_migrate
+
