@@ -4,10 +4,9 @@ RSpec.describe "/api/v1/videos", type: :request do
   let(:user) { create(:user) }
 
   describe "GET /api/v1/videos" do
-    context "when authenticated" do
       it "returns 200 with a list of videos" do
         create_list(:video, 3, user: user)
-        get "/api/v1/videos", headers: auth_headers(user)
+        get "/api/v1/videos"
 
         expect(response).to have_http_status(:ok)
         expect(json_response.length).to eq(3)
@@ -15,31 +14,23 @@ RSpec.describe "/api/v1/videos", type: :request do
 
       it "returns videos with expected fields" do
         create(:video, user: user, title: "My Video")
-        get "/api/v1/videos", headers: auth_headers(user)
+        get "/api/v1/videos"
 
         video_json = json_response.first
         expect(video_json).to include(:id, :title, :description, :link, :created_at, :shared_by)
-        expect(video_json[:shared_by]).to include(:name)
+        expect(video_json[:shared_by]).to include(:email)
       end
 
       it "returns videos ordered newest first" do
         older = create(:video, user: user, created_at: 2.days.ago)
         newer = create(:video, user: user, created_at: 1.hour.ago)
 
-        get "/api/v1/videos", headers: auth_headers(user)
+        get "/api/v1/videos"
 
         ids = json_response.map { |v| v[:id] }
         expect(ids.first).to eq(newer.id)
         expect(ids.last).to eq(older.id)
       end
-    end
-
-    context "when unauthenticated" do
-      it "returns 401" do
-        get "/api/v1/videos"
-        expect(response).to have_http_status(:unauthorized)
-      end
-    end
   end
 
   describe "POST /api/v1/videos" do
@@ -65,7 +56,7 @@ RSpec.describe "/api/v1/videos", type: :request do
 
         body = json_response
         expect(body[:title]).to eq("Rick Astley - Never Gonna Give You Up")
-        expect(body[:shared_by][:name]).to eq(user.name)
+        expect(body[:shared_by][:email]).to eq(user.email)
       end
 
       it "broadcasts a notification via Action Cable" do

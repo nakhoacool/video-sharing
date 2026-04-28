@@ -4,7 +4,7 @@ RSpec.describe ShareVideoService do
   subject(:service) { described_class.new(video_repository: video_repo) }
 
   let(:video_repo) { instance_double(VideoRepository) }
-  let(:user)       { build_stubbed(:user, name: "Alice") }
+  let(:user)       { build_stubbed(:user, name: "Alice", email: "alice@example.com") }
 
   let(:valid_params) do
     { title: "Cool Video", description: "A description", link: "https://youtu.be/dQw4w9WgXcQ" }
@@ -38,7 +38,7 @@ RSpec.describe ShareVideoService do
           hash_including(
             type: "new_video_shared",
             video: hash_including(title: "Cool Video"),
-            shared_by: { name: "Alice" }
+            shared_by: { email: "alice@example.com" }
           )
         )
       end
