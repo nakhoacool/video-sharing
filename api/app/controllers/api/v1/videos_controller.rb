@@ -15,7 +15,7 @@ module Api
         if result.success?
           render json: VideoSerializer.new(result.data).as_json, status: :created
         else
-          render json: { errors: result.errors }, status: :unprocessable_entity
+          render json: { errors: result.errors }, status: :unprocessable_content
         end
       end
 

@@ -31,9 +31,9 @@ RSpec.describe "/api/v1/auth", type: :request do
     context "with duplicate email" do
       before { create(:user, email: "alice@example.com") }
 
-      it "returns 422 unprocessable_entity" do
+      it "returns 422 unprocessable_content" do
         post "/api/v1/auth/register", params: valid_params
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(json_response[:errors]).not_to be_empty
       end
     end
@@ -41,7 +41,7 @@ RSpec.describe "/api/v1/auth", type: :request do
     context "with missing required fields" do
       it "returns 422 with error details" do
         post "/api/v1/auth/register", params: { email: "", password: "pass" }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end

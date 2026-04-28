@@ -75,7 +75,7 @@ RSpec.describe "/api/v1/videos", type: :request do
              params: valid_params.merge(link: "https://vimeo.com/123"),
              headers: auth_headers(user)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(json_response[:errors]).not_to be_empty
       end
 
@@ -84,7 +84,7 @@ RSpec.describe "/api/v1/videos", type: :request do
              params: valid_params.merge(title: ""),
              headers: auth_headers(user)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
 
