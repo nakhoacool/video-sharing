@@ -6,14 +6,6 @@ A full-stack platform where users register, log in, and share YouTube links. Rea
 
 ---
 
-## Live Demo
-
-Deployed on **Render.com**: <https://video-sharing-client-m4ya.onrender.com/>
-
-> **Note:** The app runs on Render's free tier and spins down after inactivity. The first request after a period of no use may take **30–60 seconds** to respond while the server wakes up. Subsequent requests will be fast.
-
----
-
 ## Features
 
 | Feature | Details |
